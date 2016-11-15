@@ -1,0 +1,25 @@
+{
+  "name": "september",
+  "version": "1.0.0",
+  "description": "september blue",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp default"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahbing/September.git"
+  },
+  "author": "ahbing <givemearainbowlife@gmail.com> (http://ahbing.me)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahbing/September/issues"
+  },
+  "homepage": "https://github.com/ahbing/September#readme",
+  "devDependencies": {
+    "browser-sync": "^2.17.6",
+    "gulp": "^3.9.1",
+    "gulp-ruby-sass": "^2.1.1"
+  }
+}

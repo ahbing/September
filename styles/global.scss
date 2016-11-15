@@ -1,0 +1,146 @@
+// global class style
+$font: "Georgia", "Xin Gothic", Helvetica，Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+
+html {
+  // 浏览器默认 font-size 是 16px
+  // 将 root font-size 设置成 10px 是为了方便使用 rem 单位的计算
+  font-size: 62.5%;
+}
+body {
+  position: relative;
+  box-sizing: border-box;
+}
+.september ::-moz-selection {
+  background-color: $black;
+  color: $light;
+}
+
+.september ::selection {
+  background-color: $black;
+  color: $light;
+}
+.september {
+  font-family: $font;
+  font-weight: $normal;
+  @include font-size($normal);
+  letter-spacing: .5px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.september h1 {
+  @include font-size($huge + 1);
+  @include breakPoint(desktop) {
+    @include font-size($gigantic + 1);
+  }
+}
+
+.september h2 {
+  @include font-size($large + 1);
+  @include breakPoint(desktop) {
+    @include font-size($huge + 1);
+  }
+}
+.september p {
+  margin-top: 0;
+  @include font-size($normal);
+  @include breakPoint(desktop) {
+    @include font-size($larger);
+  }
+}
+
+.september ul {
+  list-style-type: square;
+}
+.september ol {
+  list-style-type: decimal;
+}
+.september ul,
+.september ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 1.4rem;
+}
+.september li {
+  margin-bottom: 1.4rem;
+}
+.september li ul {
+  list-style-type: disc;
+}
+.september li ul ul {
+  list-style-type: circle;
+}
+
+.september li p {
+  margin: 0.4em 0 0.6em;
+}
+.september .unstyled {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.september code {
+  background-color: $light;
+  padding: 1px 2px;
+  border: 1px solid $line;
+  word-wrap: break-word;
+  border-radius: $radius;
+}
+.september a {
+  cursor: pointer;
+  color: $black;
+  text-decoration-color: $line;
+  font-weight: bolder;
+  word-wrap: break-word;
+  @include font-size($normal - 2);
+  @include breakPoint(desktop) {
+    @include font-size($larger - 2);
+  }
+  &:active,
+  &:hover {
+    color: $grey;
+  }
+}
+
+.september strong,
+.september b {
+  font-weight:  700;
+  color: $emphasis;
+}
+.september em,
+.september i {
+  font-style: italic;
+  color: $emphasis;
+}
+.september img {
+  max-width: 100%;
+  height: auto;
+  margin: $margin 0;
+}
+.september code {
+  font-family: $code;
+  font-weight: $normal;
+}
+
+.september hr {
+  display: block;
+  width: 14%;
+  max-width: 10rem;
+  margin: 4rem auto 3.4rem;
+  border: 0 none;
+  border-top: .3rem solid #dededc;
+}
+
+.september time {
+  @include font-size($small + 2);
+  @include breakPoint(desktop) {
+    @include font-size($normal);
+  }
+}
+.none {
+  display: none;
+}
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}

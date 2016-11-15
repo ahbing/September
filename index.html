@@ -2,20 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>September</title>
+  <title>September Blue</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="ahbing's homepage">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./september.css">
+  <style>
+  .september > header,
+  .september > article,
+  .september > nav,
+  .september> footer {
+    width: 80%;
+    max-width: 60rem;
+    margin: 0 auto;
+  }
+  .september > nav {
+    width: 90%;
+  }
+  .september > nav ul {
+    margin: 0;
+  }
+  .september > header {
+    margin-top: 14rem;
+    margin-bottom: 6rem; 
+  }
+  .september > header h2 {
+    margin-top: 4rem;
+    color: #787879;
+  }
+  .september > footer {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+  }
+  </style>
 </head>
-<body>
-  <p>Hello, my name is ahbing, is a front-end engineer from China, </p>
-  <p>I like to discover and create beautiful things.</p>
-  <ul>
-    <li><a target="_blank" href="https://twitter.com/aahbing">twitter</a></li>
-    <li><a target="_blank" href="https://github.com/ahbing">github</a></li>
-    <li><a target="_blank" href="https://medium.com/@aahbing">medium</a></li>
-    <li><a target="_blank" href="http://www.flickr.com/people/liferainbow/">flickr</a></li>
-  </ul>
-  <p>Thank you for your attention.</p>
+<body class="september">
+  <header>
+    <h1>Ahbing</h1>
+    <h2>Records about life, books, code and philosophy.</h2>
+  </header>
+  <article>
+    <p><time></time></p>
+  </article>
+  <hr>
+  <nav>
+    <ul>
+      <li><a target="_blank" href="https://medium.com/@aahbing">Medium</a>: 独立的思考的杂文</li>
+      <li><a target="_blank" href="https://www.douban.com/people/78504665/">Douban</a>:电影、书籍和音乐的列表</li>
+      <li><a target="_blank" href="https://github.com/ahbing">Github</a>: 用代码改良世界的一种方式</li>
+      <li><a target="_blank" href="http://blog.ahbing.me">Blog</a>: 有关技术的学习记录与思考总结</li>
+      <li><a target="_blank" href="http://fanfou.com/ahbing">Fanfou</a>: 关于生活随想与琐事的一种记录</li>
+      <li><a target="_blank" href="https://about.me/ahbing">More about Me</a>: More self-introduction</li>
+    </ul>
+  </nav>
+
+  <footer>
+    <span>&copy; Copyright 2015 - 2016 by ahbing</span>
+  </footer>
+  <script src="./records.js"></script>
+  <script>
+    var article = document.querySelector('article');
+    var time = article.querySelector('time');
+    var record = records[0];
+    var targetTag = record.type ? 'img' : 'p';
+    var contentTarget = record.type ? 'src' : 'textContent';
+    var docFragment = document.createDocumentFragment();
+    
+    time.textContent = record['time'];
+    var rows = record['rows'];
+    rows.forEach(function(row) {
+      var rowNode = document.createElement(targetTag);
+      rowNode[contentTarget] = row;
+      docFragment.appendChild(rowNode);
+    });
+    article.appendChild(docFragment);
+    
+  </script>
 </body>
 </html>
