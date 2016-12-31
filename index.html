@@ -71,17 +71,19 @@
   <footer>
     <span>&copy; Copyright 2015 - 2017 by <a target="_blank" href="https://about.me/ahbing">Ahbing Huang</a></span>
   </footer>
-  <script src="./records.js"></script>
+  <script async="async" src="./records.js"></script>
   <script>
+  window.onload = function() {
+    // init 
+    var initHash = window.location.hash;
+    var initIndex = initHash ? +initHash.slice(1) : 0;
+    generate(initIndex);
+  }
     var article = document.querySelector('article');
     var time = article.querySelector('time');
     var pagination = article.querySelector('.pagination');
     var docFragment = document.createDocumentFragment();
 
-    // init 
-    var initHash = window.location.hash;
-    var initIndex = initHash ? +initHash.slice(1) : 0;
-    generate(initIndex);
     window.onhashchange = function(e) {
       var newUrl = e.newURL;
       var newHashIndex = +newUrl.slice(newUrl.lastIndexOf('#') + 1);
@@ -91,14 +93,14 @@
     // @parentNode @childNodeClassName
     function removeOldChildren(parent, child) {
       var child = parent.querySelectorAll(child);
-      child.forEach(function(item) {
+      Array.prototype.slice.call(child).forEach(function(item) {
         parent.removeChild(item);
       });
     }
 
     function updatePagination(index) {
       var paginationPointer = pagination.querySelectorAll('a');
-      paginationPointer.forEach(function(item) {
+      Array.prototype.slice.call(paginationPointer).forEach(function(item) {
         var className = item.className;
         if (className === 'prev') {
           var prevIndex = index+1;
