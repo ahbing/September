@@ -90,7 +90,6 @@ body {
   cursor: pointer;
   color: $black;
   text-decoration-color: $line;
-  font-weight: bolder;
   word-wrap: break-word;
   @include font-size($normal - 2);
   @include breakPoint(desktop) {
