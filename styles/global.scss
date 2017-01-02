@@ -40,6 +40,13 @@ body {
     @include font-size($huge + 1);
   }
 }
+
+.september h3 {
+  @include font-size($larger + 1);
+  @include breakPoint(desktop) {
+    @include font-size($large + 1);
+  }
+}
 .september p {
   margin-top: 0;
   @include font-size($normal);
