@@ -43,6 +43,9 @@
   .prev {
    padding-right:1rem; 
   }
+  img.row{
+    margin-bottom: 1.8rem;
+  }
   .next {
     float: right;
     padding-left:1rem;
@@ -72,12 +75,12 @@
   </footer>
   <script async="async" src="./2017.js"></script>
   <script>
-  window.onload = function() {
-    // init 
-    var initHash = window.location.hash;
-    var initIndex = initHash ? +initHash.slice(1) : 0;
-    generate(initIndex);
-  }
+    window.onload = function() {
+      // init 
+      var initHash = window.location.hash;
+      var initIndex = initHash ? +initHash.slice(1) : 0;
+      generate(initIndex);
+    }
     var article = document.querySelector('article');
     var time = article.querySelector('time');
     var pagination = article.querySelector('.pagination');
@@ -117,14 +120,17 @@
         ? 0 : index > records.length - 1
         ? records.length - 1 : index;
       var record = records[index];
-      var targetTag = record.type ? 'img' : 'p';
-      var contentTarget = record.type ? 'src' : 'textContent';
       time.textContent = record['time'];
       var rows = record['rows'];
+      var className = 'row';
       rows.forEach(function(row) {
+        var isImg = row.src;
+        var targetTag = isImg ? 'img' : 'p';
+        var contentTarget = isImg ? 'src' : 'textContent';
+        var content = isImg ? isImg : row;
         var rowNode = document.createElement(targetTag);
-        rowNode.className = 'row';
-        rowNode[contentTarget] = row;
+        rowNode.className = className;
+        rowNode[contentTarget] = content;
         docFragment.appendChild(rowNode);
       });
       removeOldChildren(article, '.row');
