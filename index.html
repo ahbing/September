@@ -10,12 +10,13 @@
   .september > header,
   .september > article,
   .september > nav,
-  .september> footer {
+  .september> footer,
+  .september > section {
     width: 80%;
     max-width: 60rem;
     margin: 0 auto;
   }
-  .september > nav {
+  .september > nav{
     width: 90%;
   }
   .september > nav ul {
@@ -59,6 +60,7 @@
   </header>
   <article>
     <p><time></time></p>
+    <p><iframe style="display: none" frameborder="no" border="0" marginwidth="0" marginheight="0" width=500 height=86 src=""></iframe></p>
     <p class="pagination"><a class="prev" href="">往者</a><a class="next" href="">来者</a></p>
   </article>
   <hr>
@@ -69,7 +71,7 @@
       <li><a target="_blank" href="http://fanfou.com/ahbing">饭否</a>: 是我隐秘的哀愁，还我持重、克制的人生...</li>
     </ul>
   </nav>
-
+  <hr>
   <footer>
     <span>&copy; Copyright 2015 - 2017 by <a target="_blank" href="https://about.me/ahbing">Ahbing Huang</a></span>
   </footer>
@@ -84,6 +86,7 @@
     var article = document.querySelector('article');
     var time = article.querySelector('time');
     var pagination = article.querySelector('.pagination');
+    var iframe = document.querySelector('iframe');
     var docFragment = document.createDocumentFragment();
 
     window.onhashchange = function(e) {
@@ -122,7 +125,12 @@
       var record = records[index];
       time.textContent = record['time'];
       var rows = record['rows'];
+      var musicSrc = record['musicSrc'];
       var className = 'row';
+      if (musicSrc) {
+        iframe.style.display = 'block';
+        iframe.src = musicSrc;
+      }
       rows.forEach(function(row) {
         var isImg = row.src;
         var targetTag = isImg ? 'img' : 'p';
