@@ -127,6 +127,8 @@
       var rows = record['rows'];
       var musicSrc = record['musicSrc'];
       var className = 'row';
+      iframe.style.display = 'none';
+      iframe.src = '';
       if (musicSrc) {
         iframe.style.display = 'block';
         iframe.src = musicSrc;

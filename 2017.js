@@ -1,7 +1,7 @@
 var records = [
   {
     time: '2017-03-07',
-    musicSrc: '//music.163.com/outchain/player?type=2&id=19001910&auto=1&height=66',
+    musicSrc: 'http://music.163.com/outchain/player?type=2&id=19001910&auto=1&height=66',
     rows: []
   },
   {
