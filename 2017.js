@@ -1,5 +1,12 @@
 var records = [
   {
+    time: '2017-04-02',
+    rows: [
+      { src: 'https://photo.tuchong.com/1736991/f/25728352.jpg' },
+      '无题',
+    ]
+  },
+  {
     time: '2017-03-07',
     musicSrc: 'http://music.163.com/outchain/player?type=2&id=19001910&auto=1&height=66',
     rows: []
@@ -7,7 +14,6 @@ var records = [
   {
     time: '2017-02-11',
     rows: [
-      { src: './images/0211.png' },
       '无惧于雨，无惧于风，无惧于大雪盛暑，',
       '身强体壮，清心寡欲，不嗔不怒，常保恬静笑容。',
       '干旱感伤落泪，冷夏惶惶而行。',
