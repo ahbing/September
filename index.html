@@ -2,154 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>日长如小年</title>
+  <title>无-ahbing</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./september.css">
   <style>
-  .september > header,
-  .september > article,
-  .september > nav,
-  .september> footer,
-  .september > section {
-    width: 80%;
-    max-width: 60rem;
-    margin: 0 auto;
-  }
-  .september > nav{
-    width: 90%;
-  }
-  .september > nav ul {
-    margin: 0;
-  }
-  .september > header {
-    margin-top: 14rem;
-    margin-bottom: 6rem; 
+  html,
+  body {
+    width: 100%;
+    height: 100%;
   }
 
-  .september > header h3 {
-    color: #787879;
-    font-weight: lighter
+  .september > nav {
+    width: 80%;
+    max-width: 54rem;
+    margin: 0 auto;
   }
-  .september > footer {
-    margin-top: 4rem;
-    margin-bottom: 2rem;
+
+  .september > nav{
+    margin-top: 2rem
   }
-  .september > footer a {
-    font-size: 1.4rem; 
-  }
-  .september .pagination {
-    margin-top: 3.6rem; 
-  }
-  .prev {
-   padding-right:1rem; 
-  }
-  img.row{
-    margin-bottom: 1.8rem;
-  }
-  .next {
-    float: right;
-    padding-left:1rem;
-  }
+
   </style>
 </head>
 <body class="september">
-  <header>
-    <h1>日长小记</h1>
-    <h3>希望，祈祷，我的心境不要再粗糙、荒芜下去</h3>
-  </header>
-  <article>
-    <p><time></time></p>
-    <p><iframe style="display: none" frameborder="no" border="0" marginwidth="0" marginheight="0" width=500 height=86 src=""></iframe></p>
-    <p class="pagination"><a class="prev" href="">往者</a><a class="next" href="">来者</a></p>
-  </article>
-  <hr>
   <nav>
     <ul>
-      <!--<li><a target="_blank" href="http://blog.ahbing.me">博客</a>: 技术相关的文章。</li>-->
-      <!--<li><a target="_blank" href="https://www.douban.com/people/aahbing/">豆瓣</a>: 我的电影、书籍、音乐以及直觉。</li>-->
-      <!--<li><a target="_blank" href="http://fanfou.com/ahbing">饭否</a>: 是我隐秘的哀愁，还我持重、克制的人生...</li>-->
-      <li><a target="_blank" href="https://www.douban.com/people/aahbing/">豆瓣</a></li>
-      <li><a target="_blank" href="http://weibo.com/aahbing">微博</a></li>
-      <li><a target="_blank" href="https://www.instagram.com/ahbing.huang/">Instagram</a></li>
+      <li>天使从空中飞过，听从神的旨意隐去双翅，像乘着降落伞一般飘落到世界的各个角落。我落在北国的雪原，你落在南国的蜜柑田，而这群少年落在了上野公园。我们之间的差别仅仅如此。少年们啊，无论你们今后度过多少岁月，都请不要介意自己的容貌，不要吸食香烟，若非节日，也别喝酒。长大后，请多加爱惜那性格内向、不爱浓妆的姑娘。</li>
     </ul>
   </nav>
-  <hr>
-  <footer>
-    <span>&copy; Copyright 2015 - 2017 by <a target="_blank" href="https://about.me/ahbing">Ahbing Huang</a></span>
-  </footer>
-  <script async="async" src="./2017.js"></script>
-  <script>
-    window.onload = function() {
-      // init 
-      var initHash = window.location.hash;
-      var initIndex = initHash ? +initHash.slice(1) : 0;
-      generate(initIndex);
-    }
-    var article = document.querySelector('article');
-    var time = article.querySelector('time');
-    var pagination = article.querySelector('.pagination');
-    var iframe = document.querySelector('iframe');
-    var docFragment = document.createDocumentFragment();
-
-    window.onhashchange = function(e) {
-      var newUrl = e.newURL;
-      var newHashIndex = +newUrl.slice(newUrl.lastIndexOf('#') + 1);
-      generate(newHashIndex)
-    }
-
-    // @parentNode @childNodeClassName
-    function removeOldChildren(parent, child) {
-      var child = parent.querySelectorAll(child);
-      Array.prototype.slice.call(child).forEach(function(item) {
-        parent.removeChild(item);
-      });
-    }
-
-    function updatePagination(index) {
-      var paginationPointer = pagination.querySelectorAll('a');
-      Array.prototype.slice.call(paginationPointer).forEach(function(item) {
-        var className = item.className;
-        if (className === 'prev') {
-          var prevIndex = index+1;
-          item.href = '#' + prevIndex;
-        } else if(className === 'next') {
-          var oldIndex = index-1;
-          item.href = '#' + oldIndex;
-        }
-      });
-    }
-
-    function generate(index) {
-      if (isNaN(index)) index = 0;
-      index = index < 0 
-        ? 0 : index > records.length - 1
-        ? records.length - 1 : index;
-      var record = records[index];
-      time.textContent = record['time'];
-      var rows = record['rows'];
-      var musicSrc = record['musicSrc'];
-      var className = 'row';
-      iframe.style.display = 'none';
-      iframe.src = '';
-      if (musicSrc) {
-        iframe.style.display = 'block';
-        iframe.src = musicSrc;
-      }
-      rows.forEach(function(row) {
-        var isImg = row.src;
-        var targetTag = isImg ? 'img' : 'p';
-        var contentTarget = isImg ? 'src' : 'textContent';
-        var content = isImg ? isImg : row;
-        var rowNode = document.createElement(targetTag);
-        rowNode.className = className;
-        rowNode[contentTarget] = content;
-        docFragment.appendChild(rowNode);
-      });
-      removeOldChildren(article, '.row');
-      article.insertBefore(docFragment, pagination);
-      updatePagination(index);
-    }
-  </script>
-</body>
+  <nav>
+    <ul>
+        <li><a target="_blank" href="http://fanfou.com/ahbing">饭否</a></li>
+        <li><a target="_blank" href="https://www.douban.com/people/aahbing/">豆瓣</a></li>
+        <li><a target="_blank" href="https://www.instagram.com/ahbing.huang/">Instagram</a></li>
+        <!-- <li><img src="./images/qrcode.jpg" alt="曼彻斯特的海边"></li> -->
+    </ul>
+  </nav>
+ </body>
+ <script>
+   
+ </script>
 </html>
